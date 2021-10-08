@@ -43,6 +43,7 @@ import org.tensorflow.lite.examples.classification.ui.RecognitionAdapter
 import org.tensorflow.lite.examples.classification.util.YuvToRgbConverter
 import org.tensorflow.lite.examples.classification.viewmodel.Recognition
 import org.tensorflow.lite.examples.classification.viewmodel.RecognitionListViewModel
+import org.tensorflow.lite.support.model.Model
 import java.util.concurrent.Executors
 import kotlin.random.Random
 
@@ -209,8 +210,10 @@ class MainActivity : AppCompatActivity() {
         // TODO 1: Add class variable TensorFlow Lite Model
         // Initializing the flowerModel by lazy so that it runs in the same thread when the process
         // method is called.
+//        private val flowerModel = FlowerModel.newInstance(ctx, options)
 
         // TODO 6. Optional GPU acceleration
+        private val options = Model.Options.Builder().setDevice(Model.Device.GPU).build()
 
 
         override fun analyze(imageProxy: ImageProxy) {
